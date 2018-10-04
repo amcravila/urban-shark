@@ -61,11 +61,3 @@ function getMoviesInDB() {
     }
   })
 }
-
-
-// localStorage.setItem('userCupon', valor);
-        // localStorage.setItem('image', valor.image);
-        // localStorage.setItem('cupons', valor.coupons);
-        // localStorage.setItem('title', valor.title);
-        // localStorage.setItem('description', valor.description);
-        // localStorage.setItem('percent', valor.percent);
