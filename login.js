@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.signup-button').click((event) => {
+  $('#signup-button').click((event) => {
     event.preventDefault();
     const database = firebase.database();
     const name = $('.signup-name').val();
@@ -7,7 +7,7 @@ $(document).ready(() => {
     const pass = $('.signup-pass').val();
 
     // Sign Up
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(mail, pass)
       .then((response) => {
         database.ref('user/' + response.user.uid).set({
           email: mail,
@@ -26,20 +26,20 @@ $(document).ready(() => {
       });
   });
 
-  $('.login-button').click((event) => {
+  $('#login-button').click((event) => {
     event.preventDefault();
     const mail = $('.signup-email').val();
     const pass = $('.signup-pass').val();
 
     // Login
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then((response) => {
         window.location = 'home.html?id=' + response.user.uid + '&';
       })
       .catch((error) => {
         let errorCode = error.code;
         let errorMessage = error.message;
-        $('form').append('<span class="message">' + errorMessage + '</span>');
+        $('form').append(`<span class='message'>${errorMessage}</span>`);
       });
   });
 });
