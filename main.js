@@ -11,7 +11,6 @@ $(document).ready(() => {
     let movieImage = $('#movie-image').val();
     let movieDescription = $('#movie-description').val();
     let coupons = $('#movie-coupons').val();
-    console.log(coupons);
     let discount = $('#movie-discount option:selected').val();
     let movieFromDB = addCouponsToDB(movieTitle, movieImage, movieDescription, coupons, discount);
   }
