@@ -20,14 +20,17 @@ function getMoviesInDB() {
       let valorItem = valor; 
       let coupons = valor.coupons;
       let description = valor.description;
+      $('#coupons').css('display', 'flex');
+      $('#coupons').css('flex-wrap', 'wrap');
+      $('#coupons').css('justify-content', 'center');
       $('#coupons').append(
       `<div class="card" style="width: 18rem;">
        <img class="card-img-top" src="${image}" alt="Card image cap">
-       <div class="card-body d-flex justify-content-between">
+       <div class="card-body d-flex flex-column justify-content-around ">
          <h5 class="card-title">${title}</h5>
-         <h5 class="card-title">${discount}</h5>
-         <button type="button" data-id="${valorItem}" class="btn btn-secondary btnList">Reserve</button>
+         <h5 class="card-title">Desconto: ${discount}%</h5>
        </div>
+       <button type="button" data-id="${valorItem}" class="btn btn-secondary btn-sm btnList" style="width: 70px; height: 30px;">Reserve</button>
       </div>
       `);
       $(`.btnList[data-id="${valorItem}"]`).on("click", () => {
