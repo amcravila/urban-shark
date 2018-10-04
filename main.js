@@ -1,3 +1,6 @@
+const userId = localStorage.getItem('userID');
+const database = firebase.database();
+
 $(document).ready(() => {
   $('#submit-form').click(addCoupons);
 
@@ -8,6 +11,7 @@ $(document).ready(() => {
     let movieImage = $('#movie-image').val();
     let movieDescription = $('#movie-description').val();
     let coupons = $('#movie-coupons').val();
+    console.log(coupons);
     let discount = $('#movie-discount option:selected').val();
     let movieFromDB = addCouponsToDB(movieTitle, movieImage, movieDescription, coupons, discount);
   }
@@ -17,8 +21,8 @@ $(document).ready(() => {
       movieTitle: movieTitle,
       movieImage: movieImage,
       movieDescription: movieDescription,
-      coupons: coupons,
-      discount: discount
+      coupons,
+      discount
     });
   }
 });

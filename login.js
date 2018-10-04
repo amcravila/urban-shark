@@ -41,11 +41,11 @@ function signInClick(event) {
     .then((response) => {
       const userId = response.user.uid;
       localStorage.setItem('userID', userId);
-      // window.location = 'home.html?id=' + response.user.uid + '&';
+      window.location = 'partners.html';
     })
     .catch((error) => {
       let errorCode = error.code;
       let errorMessage = error.message;
-      $('form').append(`<span class='message'>${errorMessage}</span>`);
+      $('#formLogin').append(`<span class='message'>${errorMessage}</span>`);
     });
 };
