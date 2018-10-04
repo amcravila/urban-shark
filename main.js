@@ -16,11 +16,11 @@ $(document).ready(() => {
     let movieFromDB = addCouponsToDB(movieTitle, movieImage, movieDescription, coupons, discount);
   }
 
-  function addCouponsToDB(movieTitle, movieImage, movieDescription, cupons, discount) {
+  function addCouponsToDB(movieTitle, movieImage, movieDescription, coupons, discount) {
     return database.ref('partners/' + userId).push({
-      movieTitle: movieTitle,
-      movieImage: movieImage,
-      movieDescription: movieDescription,
+      title: movieTitle,
+      image: movieImage,
+      description: movieDescription,
       coupons,
       discount
     });
