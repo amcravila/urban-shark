@@ -15,24 +15,35 @@
 // });
 
 $(document).ready(function(){
-  let movies = getMoviesInDB();
+  var movies = getMoviesInDB();
   console.log(movies);
+  movies.filter( function (index) {
+
+  })
 })
 function getMoviesInDB() {
+  let banana = [];
   database.ref('/partners/').once('value')
   .then(function(snapshot){
-    let banana = []
     snapshot.forEach(function(childSnapshot) {
       var childKey = childSnapshot.key;
       var childData = childSnapshot.val();
       childSnapshot.forEach(function(d) {
-        banana.push(d.val())
-
+        banana.push(d.val());
       })
-      })
-      return banana;
     })
+  })
+  return banana;
 }
+
+  // let template =`<div class="card" style="width: 18rem;">
+  //   <div class="card-body d-flex justify-content-between">
+  //     <h5 class="card-title">${movies.title}</h5>
+  //     <h5 class="card-title">${movies.discount}</h5>
+  //     <button type="button" data-id="${userCupon}" class="btn-list btn btn-secondary">Reserve</button>
+  //   </div>
+  // </div>`
+  // $('#coupons').append(template);
       // database.ref('partners').once('value')
       // .then(function(snapshot) {
       //   snapshot.forEach(function(childSnapshot) {
@@ -58,25 +69,25 @@ function getMoviesInDB() {
   // });
 
 
-    // var info = snapshot.val();
-    // for(user in info) {
-    //   for(userCupon of user) {
-        // let template =`<div class="card" style="width: 18rem;">
-        //   <div class="card-body d-flex justify-content-between">
-        //     <h5 class="card-title">${userCupon.title}</h5>
-        //     <h5 class="card-title">${userCupon.discount}</h5>
-        //     <button type="button" data-id="${userCupon}" class="btn-list btn btn-secondary">Reserve</button>
-        //   </div>
-        // </div>`
-        // $('#coupons').append(template);
-        // $(`.btnList[data-id=${user-userCupon}]`).on("click", () => {
-        //   localStorage.setItem('userCupon', userCupon);
-        //   localStorage.setItem('image', userCupon.image);
-        //   localStorage.setItem('cupons', userCupon.coupons);
-        //   localStorage.setItem('title', userCupon.title);
-        //   localStorage.setItem('description', userCupon.description);
-        //   localStorage.setItem('percent', userCupon.percent);
-        //   window.location = ".js";
-        // })
-      // }
-    // }
+// var info = snapshot.val();
+// for(user in info) {
+//   for(userCupon of user) {
+//     let template =`<div class="card" style="width: 18rem;">
+//       <div class="card-body d-flex justify-content-between">
+//         <h5 class="card-title">${userCupon.title}</h5>
+//         <h5 class="card-title">${userCupon.discount}</h5>
+//         <button type="button" data-id="${userCupon}" class="btn-list btn btn-secondary">Reserve</button>
+//       </div>
+//     </div>`
+//     $('#coupons').append(template);
+//     $(`.btnList[data-id=${user-userCupon}]`).on("click", () => {
+//       localStorage.setItem('userCupon', userCupon);
+//       localStorage.setItem('image', userCupon.image);
+//       localStorage.setItem('cupons', userCupon.coupons);
+//       localStorage.setItem('title', userCupon.title);
+//       localStorage.setItem('description', userCupon.description);
+//       localStorage.setItem('percent', userCupon.percent);
+//       window.location = ".js";
+//     })
+//   }
+// }
