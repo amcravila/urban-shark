@@ -10,7 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
   <script src="firebase-config.js"></script>
-  <title>Urban Shark</title>
+  <title>Urban Shark - Parceiro</title>
 </head>
 
 <body>
@@ -21,74 +21,57 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a id="login-button" class="nav-link" data-toggle="modal" data-target="#login" href="#">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a id="signup-button" class="nav-link" data-toggle="modal" data-target="#register" href="#">Cadastre-se</a>
-          </li>
-        </ul>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#couponRegister">Cadastre seu Cupom!</button>
       </div>
     </nav>
 
-    <div class="modal" id="login" tabindex="-1" role="dialog">
+    <div class="modal" id="couponRegister" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
+            <h5 class="modal-title">Dados do Filme</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form action="#partners.html">
+            <form>
               <div class="form-group">
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail">
+                <input type="text" class="form-control" id="movie-title" placeholder="Título...">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="password" placeholder="Password">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="submit-login">Entrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="register" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Cadastro</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="form-register">
-              <div class="form-group">
-                <input type="text" class="form-control" id="nameRegister" placeholder="Nome">
+                <input type="text" class="form-control" id="movie-image" placeholder="Link para a imagem...">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp" placeholder="E-mail">
+                <textarea class="form-control" id="movie-description" rows="3" placeholder="Descrição..."></textarea>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="passwordRegister" placeholder="Password">
+                <input type="text" class="form-control" id="movie-coupons" placeholder="Número de cupons disponíveis...">
+              </div>
+              <div class="form-group">
+                <select class="form-group custom-select" id="movie-discount">
+                  <option selected="">Selecione o desconto...</option>
+                  <option value="10">10%</option>
+                  <option value="20">20%</option>
+                  <option value="30">30%</option>
+                  <option value="40">40%</option>
+                  <option value="50">50%</option>
+                  <option value="60">60%</option>
+                  <option value="70">70%</option>
+                  <option value="80">80%</option>
+                  <option value="90">90%</option>
+                  <option value="100">100%</option>
+                </select>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="submit-register">Entrar</button>
+            <button type="button" class="btn btn-primary" id="submit-form">Enviar</button>
           </div>
         </div>
       </div>
     </div>
-
   </header>
 
   <main id="coupons"></main>
@@ -99,7 +82,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script type="text/javascript" src="login.js"></script>
-  <!-- <script type="text/javascript" src="main.js"></script> -->
+  <script type="text/javascript" src="main.js"></script>
   <!-- <script type="text/javascript" src="index.js"></script> -->
 </body>
 </html>
