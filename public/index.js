@@ -3,21 +3,25 @@ $(document).ready(function(){
 });
 
 function getMoviesInDB() {
+  $('#coupons').html('');
   database.ref('/partners/').once('value')
   .then(function(snapshot){
-    let movies = []
+    let movies = [];
+    let id = [];
     snapshot.forEach(function(childSnapshot) {
       var childKey = childSnapshot.key;
       var childData = childSnapshot.val();
       childSnapshot.forEach(function(d) {
-        movies.push(d.val())
+        movies.push(d.val());
+        id.push(d.key);
       })
     })
+    var i = 0;
     for (var valor of movies) {
       let image = valor.image;
       let title = valor.title;
       let discount = valor.discount;
-      let valorItem = valor; 
+      let valorItem = id[i];
       let coupons = valor.coupons;
       let description = valor.description;
       $('#coupons').css('display', 'flex');
@@ -33,6 +37,7 @@ function getMoviesInDB() {
        <button type="button" data-id="${valorItem}" class="btn btn-secondary btn-sm btnList" style="width: 70px; height: 30px;">Reserve</button>
       </div>
       `);
+      i++;
       $(`.btnList[data-id="${valorItem}"]`).on("click", () => {
         $('#coupons').html('');
         $('#coupons').append(
@@ -45,7 +50,7 @@ function getMoviesInDB() {
             </div>
             <div class="d-flex justify-content-around row">
               <div class="col-4">
-                <img src="${image}" alt="image">
+                <img src="${image}" alt="image" style="width: 200px; height: 250px; object-fit: cover, padding: 10px;">
               </div>
               <div class="col-8">
                 <h5>${title}</h5>
@@ -56,7 +61,7 @@ function getMoviesInDB() {
               </div>
             </div>
           </div>
-          `)  
+          `)
       })
     }
   })

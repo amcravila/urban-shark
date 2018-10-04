@@ -16,7 +16,7 @@ function getPartnerMoviesInDB() {
         childSnapshot.forEach(function(d) {
           movies.push(d.val())
         })
-      1}
+      }
     })
     for (var valor of movies) {
       let image = valor.image;
