@@ -1,25 +1,25 @@
 const database = firebase.database();
 
 $(document).ready(function() {
-  $('#login-button').click(signInClick);
-  $('#signup-button').click(signUpClick);
+  $('#submit-register').click(signUpClick);
+  $('#submit-login').click(signInClick);
 });
 
 function signUpClick(event) {
   event.preventDefault();
 
-  const name = $('#name').val();
-  const mail = $('#email').val();
-  const pass = $('#password').val();
+  const name = $('#nameRegister').val();
+  const mail = $('#emailRegister').val();
+  const pass = $('#passwordRegister').val();
 
   firebase.auth().createUserWithEmailAndPassword(mail, pass)
     .then((response) => {
       const userId = response.user.uid;
-      database.ref('partners/' + userId).set({
+      database.ref('users/' + userId).set({
         name,
         email: mail
       });
-    $('form').append(`<span class='message'>Success!</span>`);
+    $('#form-register').append(`<span class='message'>Success!</span>`);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -39,8 +39,9 @@ function signInClick(event) {
 
   firebase.auth().signInWithEmailAndPassword(mail, pass)
     .then((response) => {
-      // localStorage.setItem('userID', USER_ID);
-      window.location = 'home.html?id=' + response.user.uid + '&';
+      const userId = response.user.uid;
+      localStorage.setItem('userID', userId);
+      // window.location = 'home.html?id=' + response.user.uid + '&';
     })
     .catch((error) => {
       let errorCode = error.code;
