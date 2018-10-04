@@ -14,38 +14,48 @@
 //
 // });
 
-
 $(document).ready(function(){
-
-  database.ref('partners').once('value')
+  let movies = getMoviesInDB();
+  console.log(movies);
+})
+function getMoviesInDB() {
+  database.ref('/partners/').once('value')
   .then(function(snapshot){
+    let banana = []
     snapshot.forEach(function(childSnapshot) {
-      let childKey = childSnapshot.key;
-      let childData = childSnapshot.val();
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+      childSnapshot.forEach(function(d) {
+        banana.push(d.val())
 
-      database.ref('partners').once('value')
-      .then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            getCoupons(childSnapshot);
-          })
-        })
       })
+      })
+      return banana;
     })
+}
+      // database.ref('partners').once('value')
+      // .then(function(snapshot) {
+      //   snapshot.forEach(function(childSnapshot) {
+      //     console.log(childSnapshot);
+      //       getCoupons(childSnapshot);
+      //     })
+      //   })
 
-    function getCoupons(childSnapshot) {
-      console.log(childSnapshot);
-      // database.ref ('users/' + idOwnerPosts).once('value')
-      //   .then(function(snapshot) {
-      //     var nameOwnerPosts = snapshot.val().name;
-      //     var idOfPost = childSnapshot.key;
-      //     var post = getTextPosts(childSnapshot);
-      //     var postImg = getImgPosts(childSnapshot);
-      //     var likesOfPost = childSnapshot.val().likes;
-      //       printAllPosts(nameOwnerPosts, idOwnerPosts, idOfPost, post, postImg, likesOfPost);
-      //   });
-    }
 
-  });
+  //   function getCoupons(childSnapshot) {
+  //     console.log(childSnapshot);
+  //     // database.ref ('users/' + idOwnerPosts).once('value')
+  //     //   .then(function(snapshot) {
+  //     //     var nameOwnerPosts = snapshot.val().name;
+  //     //     var idOfPost = childSnapshot.key;
+  //     //     var post = getTextPosts(childSnapshot);
+  //     //     var postImg = getImgPosts(childSnapshot);
+  //     //     var likesOfPost = childSnapshot.val().likes;
+  //     //       printAllPosts(nameOwnerPosts, idOwnerPosts, idOfPost, post, postImg, likesOfPost);
+  //     //   });
+  //   }
+  //
+  // });
 
 
     // var info = snapshot.val();
