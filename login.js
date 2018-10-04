@@ -34,6 +34,7 @@ $(document).ready(() => {
     // Login
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then((response) => {
+        localStorage.setItem('userID', USER_ID);
         window.location = 'home.html?id=' + response.user.uid + '&';
       })
       .catch((error) => {
