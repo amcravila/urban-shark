@@ -1,5 +1,3 @@
-const database = firebase.database();
-
 $(document).ready(() => {
   $('#submit-form').click(addCoupons);
 
